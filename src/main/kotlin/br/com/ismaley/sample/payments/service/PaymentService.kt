@@ -16,7 +16,7 @@ class PaymentService(private val repository: PaymentRepository) {
     fun pay(id: String): String = findOrFail(id).pay()
 
     fun updatePaymentMethod(id: String, request: PaymentMethodUpdateRequest): PaymentMethod =
-        findOrFail(id).copy(name = request.name, type = request.type)
+        findOrFail(id).copy(name = request.name, description = request.description)
 
     fun deletePaymentMethod(id: String) = findOrFail(id).let(repository::delete)
 
