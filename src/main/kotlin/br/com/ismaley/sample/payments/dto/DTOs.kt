@@ -22,3 +22,5 @@ data class PaymentMethodDTO(val paymentMethodId: String,
                             val cardNumber: String,
                             val year: Int,
                             val month: Int)
+
+data class PaymentRequest(@Pattern(regexp = "^\\d{3}\$") @NotEmpty val cvv: Int)

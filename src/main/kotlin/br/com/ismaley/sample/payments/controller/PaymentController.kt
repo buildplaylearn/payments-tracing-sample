@@ -3,6 +3,7 @@ package br.com.ismaley.sample.payments.controller
 import br.com.ismaley.sample.payments.dto.PaymentMethodDTO
 import br.com.ismaley.sample.payments.dto.PaymentMethodRequest
 import br.com.ismaley.sample.payments.dto.PaymentMethodUpdateRequest
+import br.com.ismaley.sample.payments.dto.PaymentRequest
 import br.com.ismaley.sample.payments.model.PaymentMethod
 import br.com.ismaley.sample.payments.service.PaymentService
 import org.springframework.http.HttpStatus
@@ -47,8 +48,8 @@ class PaymentController(private val service : PaymentService) {
 
     @PostMapping("/{id}/pay")
     @ResponseStatus(HttpStatus.OK)
-    fun pay(@PathVariable id: String): String {
-        return service.pay(id)
+    fun pay(@PathVariable id: String, @RequestBody @Valid paymentRequest: PaymentRequest): String {
+        return service.pay(id, paymentRequest.cvv)
     }
 
 
