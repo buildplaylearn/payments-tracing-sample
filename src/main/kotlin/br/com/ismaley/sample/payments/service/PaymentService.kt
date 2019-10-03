@@ -25,4 +25,7 @@ class PaymentService(private val repository: PaymentRepository,
 
     private fun findOrFail(id: String): PaymentMethod =
          repository.findOne(id) ?: throw NotFoundException("not found")
+
+    fun listPaymentMethods(): List<PaymentMethod> =
+        repository.findAll()
 }
